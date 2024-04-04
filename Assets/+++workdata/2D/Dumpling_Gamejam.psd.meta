@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,150 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Dumpling_Gamejam_0
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 798
+        width: 235
+        height: 181
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d50e706c03d429342a9b71e5b8f953d6
+      internalID: 1354270304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dumpling_Gamejam_1
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 825
+        width: 349
+        height: 255
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55b8c58f5d6fa85429bb99927b490880
+      internalID: -1125467431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dumpling_Gamejam_2
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 482
+        width: 510
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3de1becefabe5c42afabcdfb91f10d1
+      internalID: -612994477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dumpling_Gamejam_3
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 531
+        width: 280
+        height: 485
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -140, y: -242.5}
+        - {x: -140, y: -57.5}
+        - {x: 16, y: -13.5}
+        - {x: 41, y: 242.5}
+        - {x: 140, y: 242.5}
+        - {x: 140, y: -242.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97353e7854fb6c04d94e7f305e7e86a2
+      internalID: -1246015556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dumpling_Gamejam_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -960, y: -540}
+        - {x: -220, y: -478}
+        - {x: -216, y: -464}
+        - {x: -162, y: -467}
+        - {x: -164, y: -125}
+        - {x: -230, y: -124}
+        - {x: -237.95996, y: -82.38101}
+        - {x: -112, y: 7}
+        - {x: -100, y: 540}
+        - {x: 960, y: 540}
+        - {x: 960, y: -540}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef839ec614d8ce8428363df6b99e34d5
+      internalID: 1979702590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dumpling_Gamejam_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 68
+        width: 797
+        height: 347
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39ff810479eb2ac4bb134ca5e05bb42d
+      internalID: 211297041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,9 +262,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Dumpling_Gamejam_0: 1354270304
+      Dumpling_Gamejam_1: -1125467431
+      Dumpling_Gamejam_2: -612994477
+      Dumpling_Gamejam_3: -1246015556
+      Dumpling_Gamejam_4: 1979702590
+      Dumpling_Gamejam_5: 211297041
   mipmapLimitGroupName: 
-  pSDRemoveMatte: 0
+  pSDRemoveMatte: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 
