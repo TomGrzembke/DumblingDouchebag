@@ -29,6 +29,15 @@ public class GrappleController : MonoBehaviour
         if (moveCor != null)
             StopCoroutine(moveCor);
 
+        if (InputManager.Instance.MovementVec.y > 0)
+            currentTarget = fillingPos;
+        else if (InputManager.Instance.MovementVec.x > 0)
+            currentTarget = steamPos;
+        else if (InputManager.Instance.MovementVec.y < 0)
+            currentTarget = fillPos;
+        else if (InputManager.Instance.MovementVec.x < 0)
+            currentTarget = deployPos;
+
         moveCor = StartCoroutine(MoveGrapple());
     }
 
