@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Puk
+  - Dumpling
   layers:
   - Default
   - TransparentFX

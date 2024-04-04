@@ -216,7 +216,7 @@ public class TentacleBehavior : MonoBehaviour
         AttachedPart();
         for (int i = 1; i < calc_length; i++)
         {
-            segmentPoses[i] = GetLastSegmentPose(i) + attachTrans.right;
+            segmentPoses[i] = GetLastSegmentPose(i) + attachTrans.up;
         }
         lineRend.SetPositions(segmentPoses);
     }
