@@ -13,7 +13,10 @@ public class StartupManager : MonoBehaviour
         yield return SceneLoader.LoadScene(Scenes.Manager);
 
         if (skipMainMenu)
+        {
             yield return SceneLoader.LoadScene(Scenes.Gameplay);
+            yield return SceneLoader.LoadScene(Scenes.NewsPaper);
+        }
 
         if (!SceneManager.GetSceneByBuildIndex((int)Scenes.Gameplay).IsValid())
             yield return SceneLoader.LoadScene(Scenes.MainMenu);

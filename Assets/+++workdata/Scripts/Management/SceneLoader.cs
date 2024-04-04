@@ -13,7 +13,8 @@ public enum Scenes
     Startup,
     Manager,
     MainMenu,
-    Gameplay
+    Gameplay,
+    NewsPaper
 }
 
 public class SceneLoader : MonoBehaviour
