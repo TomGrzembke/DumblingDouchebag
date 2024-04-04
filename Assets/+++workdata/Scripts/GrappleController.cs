@@ -19,7 +19,7 @@ public class GrappleController : MonoBehaviour
 
     #endregion
 
-    void Awake()
+    void Start()
     {
         InputManager.Instance.SubscribeTo(Move, InputManager.Instance.moveAction);
     }

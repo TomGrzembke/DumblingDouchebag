@@ -2459,7 +2459,7 @@ MonoBehaviour:
   fillPos: {fileID: 570378892}
   deployPos: {fileID: 1323991878}
   currentTarget: {fileID: 75568863}
-  moveTime: 3
+  moveTime: 0.3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
