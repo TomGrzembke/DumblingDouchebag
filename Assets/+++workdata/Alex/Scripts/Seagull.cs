@@ -9,11 +9,12 @@ public class Seagull : MonoBehaviour
     private SpriteRenderer sr;
     private WeaponAiming player;
 
-    
     [Header("Booleans")]
     private bool canMove = true;
     private bool canGetHit = true;
     private bool flyToRight;
+    
+    
     
     private void Start()
     {

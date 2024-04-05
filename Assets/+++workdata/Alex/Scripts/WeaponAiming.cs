@@ -1,9 +1,6 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.LowLevel;
-using Random = UnityEngine.Random;
 
 public class WeaponAiming : MonoBehaviour
 {
@@ -13,20 +10,15 @@ public class WeaponAiming : MonoBehaviour
     private Vector2 travelDirection;
 
     [Header(("Weapon"))] 
-    [SerializeField] public GameObject weaponVisual;
     [SerializeField] private ParticleSystem bulletShellsParticle;
     private float weaponAngle;
-    [SerializeField] public int bulletsPerShot = 10;
-    [SerializeField] private Transform weaponPosParent;
     [SerializeField] public Transform weaponEndPoint;
-    [SerializeField] public float shootingSpread;
     private Vector3 weaponToMouse;
     private Vector3 changingWeaponToMouse;
     public Vector3 mousePos;
     private bool hasWeapon;
     [SerializeField] private Animator weaponAnim;
     private float weaponScreenShake;
-    [SerializeField] public BulletBehaviour bulletPrefab;
 
     [Header("GameObjects")]
     [SerializeField] private GameObject muzzleFlashVisual;
@@ -125,6 +117,6 @@ public class WeaponAiming : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        
+        seaGull = null;
     }
 }
