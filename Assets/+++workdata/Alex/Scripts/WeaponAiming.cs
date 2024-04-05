@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Random = UnityEngine.Random;
 
 public class WeaponAiming : MonoBehaviour
 {
@@ -12,31 +10,29 @@ public class WeaponAiming : MonoBehaviour
     private Vector2 travelDirection;
 
     [Header(("Weapon"))] 
-    [SerializeField] public GameObject weaponVisual;
     [SerializeField] private ParticleSystem bulletShellsParticle;
     private float weaponAngle;
-    [SerializeField] public int bulletsPerShot = 10;
-    [SerializeField] private Transform weaponPosParent;
     [SerializeField] public Transform weaponEndPoint;
-    [SerializeField] public float shootingSpread;
     private Vector3 weaponToMouse;
     private Vector3 changingWeaponToMouse;
     public Vector3 mousePos;
     private bool hasWeapon;
     [SerializeField] private Animator weaponAnim;
     private float weaponScreenShake;
-    [SerializeField] public BulletBehaviour bulletPrefab;
 
     [Header("GameObjects")]
     [SerializeField] private GameObject muzzleFlashVisual;
     [SerializeField] private LineRenderer shotgunLaser;
     private RaycastHit shotgunLaserRayHit;
+    private GameObject seaGull;
 
     private void Update()
     {
         HandleAimingUpdate();
         
         Shoot();
+        
+        shotgunLaser.SetPosition(0, transform.position);
     }
 
     private void HandleAimingUpdate()
@@ -69,31 +65,26 @@ public class WeaponAiming : MonoBehaviour
             }
         }
         
-        shotgunLaser.SetPosition(0, transform.position);
         shotgunLaser.SetPosition(1, mousePos);
-
-        //Vector3 newUp = Vector3.Slerp(transform.up, weaponToMouse, Time.deltaTime * 10);
-
+        
         weaponAngle = Vector3.SignedAngle(Vector3.up, weaponToMouse, Vector3.forward);
         
         transform.eulerAngles = new Vector3(0, 0, weaponAngle);
-
-        if (!weaponVisual.activeSelf) return;
     }
     
     private void Shoot()
     {
-        if (!InputManager.Instance.leftclickAction.IsPressed()) 
+        if (!Input.GetMouseButtonDown(0)) 
             return;
 
         Ray ray = mainCamera.ScreenPointToRay(mousePos);
         ray.origin = transform.position;
 
-        if (Physics.Raycast(ray, out var raycastHit))
+        if (seaGull != null)
         {
-            transform.position = raycastHit.point;
+            StartCoroutine(seaGull.GetComponent<Seagull>().Stop());
         }
-
+        
         //StartCoroutine(WeaponVisualCoroutine());
     }
     
@@ -114,5 +105,18 @@ public class WeaponAiming : MonoBehaviour
         bulletShellsParticle.Stop();
 
         muzzleFlashVisual.SetActive(false);
+    }
+
+    private void OnTriggerEnter(Collider col)
+    {
+        if(col.gameObject.GetComponent<Seagull>())
+        {
+            seaGull = col.gameObject;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        seaGull = null;
     }
 }
