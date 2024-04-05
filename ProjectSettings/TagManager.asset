@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Puk
   - Dumpling
+  - Seagull
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - UI
   - BGPixel
   - Unpixeled
-  - 
-  - 
+  - Seagull
+  - Laser
   - 
   - 
   - 

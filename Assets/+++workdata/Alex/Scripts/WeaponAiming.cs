@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
 using Random = UnityEngine.Random;
 
 public class WeaponAiming : MonoBehaviour
@@ -31,12 +32,15 @@ public class WeaponAiming : MonoBehaviour
     [SerializeField] private GameObject muzzleFlashVisual;
     [SerializeField] private LineRenderer shotgunLaser;
     private RaycastHit shotgunLaserRayHit;
+    private GameObject seaGull;
 
     private void Update()
     {
         HandleAimingUpdate();
         
         Shoot();
+        
+        shotgunLaser.SetPosition(0, transform.position);
     }
 
     private void HandleAimingUpdate()
@@ -69,31 +73,26 @@ public class WeaponAiming : MonoBehaviour
             }
         }
         
-        shotgunLaser.SetPosition(0, transform.position);
         shotgunLaser.SetPosition(1, mousePos);
-
-        //Vector3 newUp = Vector3.Slerp(transform.up, weaponToMouse, Time.deltaTime * 10);
-
+        
         weaponAngle = Vector3.SignedAngle(Vector3.up, weaponToMouse, Vector3.forward);
         
         transform.eulerAngles = new Vector3(0, 0, weaponAngle);
-
-        if (!weaponVisual.activeSelf) return;
     }
     
     private void Shoot()
     {
-        if (!InputManager.Instance.leftclickAction.IsPressed()) 
+        if (!Input.GetMouseButtonDown(0)) 
             return;
 
         Ray ray = mainCamera.ScreenPointToRay(mousePos);
         ray.origin = transform.position;
 
-        if (Physics.Raycast(ray, out var raycastHit))
+        if (seaGull != null)
         {
-            transform.position = raycastHit.point;
+            StartCoroutine(seaGull.GetComponent<Seagull>().Stop());
         }
-
+        
         //StartCoroutine(WeaponVisualCoroutine());
     }
     
@@ -114,5 +113,18 @@ public class WeaponAiming : MonoBehaviour
         bulletShellsParticle.Stop();
 
         muzzleFlashVisual.SetActive(false);
+    }
+
+    private void OnTriggerEnter(Collider col)
+    {
+        if(col.gameObject.GetComponent<Seagull>())
+        {
+            seaGull = col.gameObject;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        
     }
 }
