@@ -9,6 +9,8 @@ TagManager:
   - Meat
   - Steam
   - MeatBowl
+  - Valve
+  - Grapple
   layers:
   - Default
   - TransparentFX

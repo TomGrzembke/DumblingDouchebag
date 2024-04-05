@@ -7,7 +7,14 @@ public class MeatPicker : MonoBehaviour
     #endregion
 
     #region private fields
-    
+
     #endregion
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("MeatBowl"))
+        {
+            meatSprite.SetActive(true);
+        }
+    }
 }
