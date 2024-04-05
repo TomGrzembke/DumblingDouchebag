@@ -47,7 +47,7 @@ public class NoodleState : MonoBehaviour
 
     IEnumerator SteamDelay()
     {
-        yield return new WaitForSeconds(.7f);
+        yield return new WaitForSeconds(.45f);
         noodRenderer.sprite = noodFolded;
     }
 }
