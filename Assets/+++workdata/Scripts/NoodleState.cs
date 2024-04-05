@@ -1,3 +1,4 @@
+using MyBox;
 using System.Collections;
 using UnityEngine;
 
@@ -6,12 +7,13 @@ public class NoodleState : MonoBehaviour
     public enum NoodState
     {
         Unfilled,
-        FilledAndBound,
+        Filled,
         Steamed,
         Deployed
     }
 
     #region serialized fields
+    public NoodState NoodStat => noodState;
     [SerializeField] NoodState noodState;
     [SerializeField] Sprite noodFilled;
     [SerializeField] Sprite noodFolded;
@@ -28,13 +30,19 @@ public class NoodleState : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
             noodRenderer.sprite = noodFilled;
-            noodState = NoodState.Unfilled;
+            noodState = NoodState.Filled;
         }
-        if (collision.CompareTag("Steam"))
+        else if (collision.CompareTag("Steam"))
         {
             noodState = NoodState.Steamed;
             StartCoroutine(SteamDelay());
         }
+    }
+
+    [ButtonMethod]
+    public void Steam()
+    {
+        noodState = NoodState.Steamed;
     }
 
     IEnumerator SteamDelay()
