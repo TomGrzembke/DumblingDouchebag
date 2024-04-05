@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Puk
   - Dumpling
+  - Meat
+  - Steam
+  - MeatBowl
   layers:
   - Default
   - TransparentFX
