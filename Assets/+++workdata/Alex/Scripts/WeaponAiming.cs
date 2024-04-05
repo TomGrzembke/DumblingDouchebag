@@ -32,7 +32,7 @@ public class WeaponAiming : MonoBehaviour
         
         Shoot();
         
-        shotgunLaser.SetPosition(0, transform.position);
+        shotgunLaser.SetPosition(0, weaponEndPoint.position);
     }
 
     private void HandleAimingUpdate()
