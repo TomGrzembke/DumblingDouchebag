@@ -4,7 +4,7 @@ using TMPro;
 public class Ammunition : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI ammoText;
-    private int ammo;
+    public int ammo;
 
     public static Ammunition Instance;
     
@@ -23,12 +23,12 @@ public class Ammunition : MonoBehaviour
         ammoText.text = ammo.ToString();
     }
 
-    private void AddAmmo()
+    public void AddAmmo()
     {
         ammo++;
     }
 
-    private void SubtractAmmo()
+    public void SubtractAmmo()
     {
         ammo--;
     }

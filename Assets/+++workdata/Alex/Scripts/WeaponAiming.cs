@@ -74,18 +74,25 @@ public class WeaponAiming : MonoBehaviour
     
     private void Shoot()
     {
-        if (!Input.GetMouseButtonDown(0)) 
-            return;
-
-        Ray ray = mainCamera.ScreenPointToRay(mousePos);
-        ray.origin = transform.position;
-
-        if (seaGull != null)
+        if (Ammunition.Instance.ammo >= 1)
         {
-            StartCoroutine(seaGull.GetComponent<Seagull>().Stop());
-        }
+            if (!Input.GetMouseButtonDown(0)) 
+                return;
+
+            StartCoroutine(ScreenShake.Instance.Noise(20, 10, 0.1f));
+
+            Ray ray = mainCamera.ScreenPointToRay(mousePos);
+            ray.origin = transform.position;
+
+            if (seaGull != null)
+            {
+                StartCoroutine(seaGull.GetComponent<Seagull>().Stop());
+            }
         
-        //StartCoroutine(WeaponVisualCoroutine());
+            Ammunition.Instance.SubtractAmmo();
+        
+            //StartCoroutine(WeaponVisualCoroutine());
+        }
     }
     
     private IEnumerator WeaponVisualCoroutine()
