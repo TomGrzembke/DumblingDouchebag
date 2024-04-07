@@ -18,6 +18,8 @@ public class GrappleController : MonoBehaviour
 
     #region private fields
 
+    public bool canMoveGrapple;
+    
     #endregion
 
     void Start()
@@ -27,23 +29,26 @@ public class GrappleController : MonoBehaviour
 
     void Move(InputAction.CallbackContext ctx)
     {
-        if (moveCor != null)
-            StopCoroutine(moveCor);
-
-        if (InputManager.Instance.MovementVec.y > 0)
-            currentTarget = fillingPos;
-        else if (InputManager.Instance.MovementVec.x < 0)
-            currentTarget = fillPos;
-        else if (InputManager.Instance.MovementVec.y < 0)
-            currentTarget = steamPos;
-        else if (InputManager.Instance.MovementVec.x > 0)
+        if(canMoveGrapple)
         {
-            StopCoroutine(moveCor);
-            moveCor = StartCoroutine(MoveDumpling());
-            return;
-        }
+            if (moveCor != null)
+                StopCoroutine(moveCor);
 
-        moveCor = StartCoroutine(MoveGrapple());
+            if (InputManager.Instance.MovementVec.y > 0)
+                currentTarget = fillingPos;
+            else if (InputManager.Instance.MovementVec.x < 0)
+                currentTarget = fillPos;
+            else if (InputManager.Instance.MovementVec.y < 0)
+                currentTarget = steamPos;
+            else if (InputManager.Instance.MovementVec.x > 0)
+            {
+                StopCoroutine(moveCor);
+                moveCor = StartCoroutine(MoveDumpling());
+                return;
+            }
+
+            moveCor = StartCoroutine(MoveGrapple());
+        }
     }
 
     IEnumerator MoveGrapple()
@@ -82,6 +87,5 @@ public class GrappleController : MonoBehaviour
             grappling.position = Vector3.Lerp(startGrapple, deployPos.position, movedTime / moveTime); ;
             yield return null;
         }
-
     }
 }

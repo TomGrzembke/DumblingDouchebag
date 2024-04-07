@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -9,24 +10,32 @@ public class DumplingBelt : MonoBehaviour
     [SerializeField] Transform targetTrans;
     [SerializeField] float yTollerance = 5;
     [SerializeField] float conveyerTime = 2;
+    [SerializeField] public float beldTime;
+    [SerializeField] private GrappleController grappleController;
     #endregion
-
-    #region private fields
-
-    #endregion
+    
     IEnumerator MoveDumpling(Transform dumpling)
     {
         Vector3 dumplingStartPos = dumpling.position;
 
-        float beldTime = 0;
-
+        beldTime = 0;
+        
         while (beldTime < conveyerTime)
         {
             beldTime += Time.deltaTime;
-            dumpling.position = Vector3.Lerp(dumplingStartPos, new(targetTrans.position.x, dumpling.position.y), beldTime / conveyerTime);
+            
+            if (beldTime >= conveyerTime)
+            {
+                grappleController.canMoveGrapple = true;
+            }
+            
+            if (dumpling != null)
+            {
+                dumpling.position = Vector3.Lerp(dumplingStartPos, new(targetTrans.position.x, dumpling.position.y), beldTime / conveyerTime);
+            }
+
             yield return null;
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -35,10 +44,5 @@ public class DumplingBelt : MonoBehaviour
         {
             StartCoroutine(MoveDumpling(collision.transform));
         }
-    }
-
-    public void SpawnNoodles()
-    {
-
     }
 }

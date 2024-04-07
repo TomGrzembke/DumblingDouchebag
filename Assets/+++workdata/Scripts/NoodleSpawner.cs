@@ -12,18 +12,9 @@ public class NoodleSpawner : MonoBehaviour
 
     #endregion
 
-    void Update()
+    public void SpawnNoodle()
     {
-        if (timeWentBy < spawnTime)
-        {
-            timeWentBy += Time.deltaTime;
-        }
-        else
-        {
-            Vector3 pos = spawnPos.localPosition.SetY(spawnPos.localPosition.y + Random.Range(-width, width));
-            Instantiate(noodlePrefab, pos, Quaternion.identity);
-            timeWentBy = 0;
-            spawnTime = Random.Range(1, 2);
-        }
+        Vector3 pos = spawnPos.localPosition.SetY(spawnPos.localPosition.y + Random.Range(-width, width));
+        Instantiate(noodlePrefab, pos, Quaternion.identity);
     }
 }
