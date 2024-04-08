@@ -37,6 +37,7 @@ public class WeaponAiming : MonoBehaviour
 
     private void HandleAimingUpdate()
     {
+        Debug.Log(mousePos);
         mousePos = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         mousePos.z = 0;
 
