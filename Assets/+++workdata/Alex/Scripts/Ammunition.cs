@@ -22,7 +22,7 @@ public class Ammunition : MonoBehaviour
         if (ammo >= 3)
         {
             fadeTime += Time.deltaTime;
-            canvas.GetComponent<CanvasGroup>().alpha = Mathf.Lerp(0, 1, fadeTime);
+            canvas.GetComponent<CanvasGroup>().alpha = Mathf.Lerp(0, .7f, fadeTime);
         }
     }
 
