@@ -5,34 +5,34 @@ using UnityEngine.InputSystem;
 public class WeaponAiming : MonoBehaviour
 {
     [Header("Camera")]
-    [SerializeField] private Camera mainCamera;
-    private Rigidbody rb;
-    private Vector2 travelDirection;
+    Camera mainCamera;
 
-    [Header(("Weapon"))] 
+    [Header(("Weapon"))]
     [SerializeField] private ParticleSystem bulletShellsParticle;
     private float weaponAngle;
     [SerializeField] public Transform weaponEndPoint;
     private Vector3 weaponToMouse;
     private Vector3 changingWeaponToMouse;
     public Vector3 mousePos;
-    private bool hasWeapon;
     [SerializeField] private Animator weaponAnim;
-    private float weaponScreenShake;
 
     [Header("GameObjects")]
     [SerializeField] private GameObject muzzleFlashVisual;
     [SerializeField] private LineRenderer shotgunLaser;
-    private RaycastHit shotgunLaserRayHit;
     private GameObject seaGull;
+
+    void Start()
+    {
+        mainCamera = Camera.main;
+    }
 
     private void Update()
     {
-        HandleAimingUpdate();
-        
-        Shoot();
-        
         shotgunLaser.SetPosition(0, weaponEndPoint.position);
+
+        HandleAimingUpdate();
+
+        Shoot();
     }
 
     private void HandleAimingUpdate()
@@ -40,43 +40,21 @@ public class WeaponAiming : MonoBehaviour
         mousePos = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         mousePos.z = 0;
 
-        if (Vector3.Distance(transform.position, mousePos) >= 1.35f)
-        {
-            if (Vector3.Distance(weaponEndPoint.position, mousePos) <= 2f)
-            {
-                changingWeaponToMouse = mousePos - weaponEndPoint.transform.position;
-
-                Vector3 negativeMousePositionXY = changingWeaponToMouse * -2;
-                Vector3 positiveMousePositionXY = changingWeaponToMouse * 2;
-            
-                if (weaponToMouse.x < 0)
-                {
-                    weaponToMouse = negativeMousePositionXY.normalized;
-                }
-
-                if (weaponToMouse.x > 0)
-                {
-                    weaponToMouse = positiveMousePositionXY.normalized;
-                }
-            }
-            else
-            {
-                weaponToMouse = mousePos - weaponEndPoint.transform.position;
-            }
-        }
-        
+        weaponToMouse = mousePos - transform.position;
         shotgunLaser.SetPosition(1, mousePos);
-        
+
         weaponAngle = Vector3.SignedAngle(Vector3.up, weaponToMouse, Vector3.forward);
-        
-        transform.eulerAngles = new Vector3(0, 0, weaponAngle);
+
+        print(weaponAngle);
+
+        transform.eulerAngles = new(0, 0, weaponAngle);
     }
-    
+
     private void Shoot()
     {
         if (Ammunition.Instance.ammo >= 1)
         {
-            if (!Input.GetMouseButtonDown(0)) 
+            if (!Input.GetMouseButtonDown(0))
                 return;
 
             StartCoroutine(ScreenShake.Instance.Noise(20, 10, 0.1f));
@@ -88,13 +66,13 @@ public class WeaponAiming : MonoBehaviour
             {
                 StartCoroutine(seaGull.GetComponent<Seagull>().Stop());
             }
-        
+
             Ammunition.Instance.SubtractAmmo();
-        
+
             //StartCoroutine(WeaponVisualCoroutine());
         }
     }
-    
+
     private IEnumerator WeaponVisualCoroutine()
     {
         muzzleFlashVisual.SetActive(true);
@@ -102,11 +80,11 @@ public class WeaponAiming : MonoBehaviour
         bulletShellsParticle.Play();
 
         weaponAnim.SetTrigger("ShootGun");
-        
+
         //AudioManager.Instance.Play("Shooting");
-        
+
         yield return new WaitForSeconds(.1f);
-        
+
         weaponAnim.SetTrigger("GunStartPos");
 
         bulletShellsParticle.Stop();
@@ -116,7 +94,7 @@ public class WeaponAiming : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if(col.gameObject.GetComponent<Seagull>())
+        if (col.gameObject.GetComponent<Seagull>())
         {
             seaGull = col.gameObject;
         }
