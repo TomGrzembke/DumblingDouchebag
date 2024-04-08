@@ -5,11 +5,12 @@ public class Ammunition : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI ammoText;
     public int ammo;
+    [SerializeField] int neededAmmo = 3;
     [SerializeField] private GameObject canvas;
     private float fadeTime;
 
     public static Ammunition Instance;
-    
+
     private void Awake()
     {
         Instance = this;
@@ -19,10 +20,10 @@ public class Ammunition : MonoBehaviour
     {
         ammoText.text = ammo.ToString();
 
-        if (ammo >= 3)
+        if (ammo >= neededAmmo)
         {
             fadeTime += Time.deltaTime;
-            canvas.GetComponent<CanvasGroup>().alpha = Mathf.Lerp(0, 1, fadeTime);
+            canvas.GetComponent<CanvasGroup>().alpha = Mathf.Lerp(0, .7f, fadeTime);
         }
     }
 

@@ -1,6 +1,5 @@
-using System;
-using System.Collections;
 using Cinemachine;
+using System.Collections;
 using UnityEngine;
 
 public class ScreenShake : MonoBehaviour
@@ -15,15 +14,15 @@ public class ScreenShake : MonoBehaviour
         Instance = this;
     }
 
-    private void Start() 
+    private void Start()
     {
         noise = vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
 
-    private void Noise(float amplitudeGain, float frequencyGain) 
+    private void Noise(float amplitudeGain, float frequencyGain)
     {
         noise.m_AmplitudeGain = amplitudeGain;
-        noise.m_FrequencyGain = frequencyGain;    
+        noise.m_FrequencyGain = frequencyGain;
     }
 
     public IEnumerator Noise(float amplitude, float frequency, float time)

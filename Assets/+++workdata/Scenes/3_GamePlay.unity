@@ -839,7 +839,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 1
   m_Sprite: {fileID: 2022373020, guid: 6b3bcd03aac89484eb23018317946d11, type: 3}
   m_Color: {r: 0.73134226, g: 0.9056604, b: 0.63652545, a: 1}
   m_FlipX: 0
@@ -923,7 +923,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: 2022373020, guid: 6b3bcd03aac89484eb23018317946d11, type: 3}
   m_Color: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 1}
   m_FlipX: 0
@@ -6392,7 +6392,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 2005413508, guid: 6b3bcd03aac89484eb23018317946d11, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -11659,7 +11659,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 9
   m_Positions:
   - {x: -13.9658375, y: 1.4901958, z: 0}
   - {x: -13.9658375, y: 0.49019575, z: 0}
@@ -12174,7 +12174,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noodleSpawner: {fileID: 1039921379}
-  dumplingBelt: {fileID: 870636023}
 --- !u!4 &1343977469
 Transform:
   m_ObjectHideFlags: 0
@@ -12413,7 +12412,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 15
+  m_SortingOrder: 0
   m_Sprite: {fileID: 1460802807, guid: 6b3bcd03aac89484eb23018317946d11, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
